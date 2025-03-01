@@ -1,0 +1,26 @@
+{
+    "rules": [
+        {
+            "predicate": "Any",
+            "conditions": [
+                {
+                    "field": "From",
+                    "predicate": "contains",
+                    "value": "onepercentclub.io"
+                },
+                {
+                    "field": "Received Date",
+                    "predicate": "greater_than",
+                    "value": {
+                        "unit": "days",
+                        "amount": 1
+                    }
+                }
+            ],
+            "actions": [
+                {"action": "mark_as_read"},
+                {"action": "move_message", "value": "Trash"}
+            ]
+        }
+    ]
+}

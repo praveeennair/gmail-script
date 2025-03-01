@@ -33,3 +33,4 @@ def get_gmail_service(mode="fetch"):
     with open(token_filename, "w") as token:
       token.write(creds.to_json())
     return creds
+  
