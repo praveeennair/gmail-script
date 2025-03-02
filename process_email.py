@@ -26,20 +26,24 @@ class RuleEngine:
             amount = value['amount']
             unit = value['unit']
             delta = relativedelta(**{unit: amount})
-            threshold = datetime.now() - delta
         else:
-            threshold = datetime.now() - timedelta(days=value)
+            delta = timedelta(days=value)
 
         if predicate == 'less_than':
-            return email_date < threshold
-        elif predicate == 'greater_than':
+            threshold = datetime.now() - delta
             return email_date > threshold
-        return False
+        elif predicate == 'greater_than':
+            threshold = datetime.now() + delta
+            return email_date > threshold
+        else:
+            return False 
 
     def _evaluate_string(self, predicate, email_value, value):
-        email_value = email_value.lower()
+        if email_value is None:
+            return False
+        email_value = str(email_value).lower()
         value = str(value).lower()
-        
+
         return {
             'contains': value in email_value,
             'does_not_contain': value not in email_value,

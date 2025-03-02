@@ -41,3 +41,7 @@ python fetch_emails.py
 ```bash
 python process_emails.py
 ```
+### Run Unit Test
+```bash
+python -m unittest discover tests
+```
