@@ -58,7 +58,8 @@ class RuleEngine:
 class GmailActionHandler:
     def __init__(self):
         # Use the 'process' scope from auth.py
-        self.service = get_gmail_service('process')
+        self.cred = get_gmail_service('process')
+        self.service = build('gmail', 'v1', credentials=self.cred)
     
     def execute_actions(self, email, actions):
         label_updates = {'addLabelIds': [], 'removeLabelIds': []}

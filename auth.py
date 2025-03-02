@@ -32,5 +32,5 @@ def get_gmail_service(mode="fetch"):
       creds = flow.run_local_server(port=0)
     with open(token_filename, "w") as token:
       token.write(creds.to_json())
-    return creds
+  return creds
   

@@ -4,7 +4,7 @@
             "predicate": "Any",
             "conditions": [
                 {
-                    "field": "From",
+                    "field": "sender",
                     "predicate": "contains",
                     "value": "onepercentclub.io"
                 },
@@ -13,7 +13,7 @@
                     "predicate": "greater_than",
                     "value": {
                         "unit": "days",
-                        "amount": 1
+                        "amount": 10
                     }
                 }
             ],
